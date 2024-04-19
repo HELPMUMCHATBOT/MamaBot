@@ -1,0 +1,9 @@
+Flask
+flask_session
+gunicorn
+google-cloud-secret-manager
+langchain
+pinecone-client
+openai==0.28.1
+langchain_google_vertexai
+Flask-CORS
