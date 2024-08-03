@@ -13,7 +13,7 @@ MamaBot-Llama-1 is an opensource fine-tuned large language model developed by He
 
 ### Model Sources
 
-- **Repository:** [MamaBot-Llama-1 on Hugging Face](https://huggingface.co/HelpMumHQ/mamabot-llama-1)
+- **Repository:** [MamaBot-Llama-1 on Hugging Face](https://huggingface.co/HelpMum-Personal/mamabot-llama-1)
 
 ## Uses
 
@@ -48,7 +48,7 @@ Use the code below to get started with the model.
 ```python
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-model_id = "HelpMumHQ/mamabot-llama-1"
+model_id = "HelpMum-Personal/mamabot-llama-1"
 tokenizer = AutoTokenizer.from_pretrained(model_id)
 model = AutoModelForCausalLM.from_pretrained(model_id)
 
@@ -138,13 +138,13 @@ The training and inference were conducted using the Hugging Face Transformers li
   author = {HelpMum},
   title = {MamaBot-Llama-1},
   year = {2024},
-  howpublished = {\url{https://huggingface.co/HelpMumHQ/mamabot-llama-1}},
+  howpublished = {\url{https://huggingface.co/HelpMum-Personal/mamabot-llama-1}},
 }
 ```
 
 **APA:**
 
-HelpMum. (2024). MamaBot-Llama-1. Retrieved from https://huggingface.co/HelpMumHQ/mamabot-llama-1
+HelpMum. (2024). MamaBot-Llama-1. Retrieved from https://huggingface.co/HelpMum-Personal/mamabot-llama-1
 
 ## Model Card Contact
 
