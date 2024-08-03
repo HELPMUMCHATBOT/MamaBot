@@ -1,9 +1,8 @@
-Flask
-flask_session
-gunicorn
-google-cloud-secret-manager
-langchain
-pinecone-client
-openai==0.28.1
-langchain_google_vertexai
-Flask-CORS
+transformers==4.31.0
+torch==2.0.1
+datasets==2.11.0
+peft==0.4.0
+accelerate==0.20.0
+trl==0.5.0
+huggingface_hub==0.16.4
+wandb==0.17.4
