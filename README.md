@@ -1,3 +1,16 @@
+
+---
+library_name: transformers
+tags:
+- maternal-healthcare
+- causal-language-model
+- Llama
+- transformers
+- healthcare-chatbot
+- open-source
+- fine-tuning
+---
+
 # Model Card for MamaBot-Llama-1
 
 MamaBot-Llama-1 is an opensource fine-tuned large language model developed by HelpMum to assist with maternal healthcare by providing accurate and reliable answers to questions about pregnancy and childbirth. The model has been fine-tuned on Llama 3.1 8b-instruct using a dataset of maternal healthcare questions and answers.
@@ -46,24 +59,27 @@ Users (both direct and downstream) should be made aware of the risks, biases, an
 Use the code below to get started with the model.
 
 ```python
+!pip install -q -U transformers
+!pip install -q -U bitsandbytes
+
 from transformers import AutoModelForCausalLM, AutoTokenizer
+tokenizer = AutoTokenizer.from_pretrained('HelpMum-Personal/mamabot-llama-1')
+model = AutoModelForCausalLM.from_pretrained('HelpMum-Personal/mamabot-llama-1')
 
-model_id = "HelpMum-Personal/mamabot-llama-1"
-tokenizer = AutoTokenizer.from_pretrained(model_id)
-model = AutoModelForCausalLM.from_pretrained(model_id)
+def generate_response(user_message):
+    tokenizer.chat_template = "{%- for message in messages %}{{ bos_token + '[INST] ' + message['content'] + ' [/INST]' if message['role'] == 'user' else ' ' + message['content'] + ' ' + eos_token }}{%- endfor %}"
+    messages = [{"role": "user", "content": user_message}]
+    prompt = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
+    inputs = tokenizer(prompt, return_tensors='pt', truncation=True).to("cuda")
+    outputs = model.generate(**inputs, max_length=150, num_return_sequences=1)
+    text = tokenizer.decode(outputs[0], skip_special_tokens=True)
+    response = (text[text.find('[/INST]') + len('[/INST]'):text.find('[INST]', text.find('[/INST]') + len('[/INST]'))] if text.find('[INST]', text.find('[/INST]') + len('[/INST]')) != -1 else text[text.find('[/INST]') + len('[/INST]'):]).strip().split('[/INST]')[0].strip()
+    return response
 
-messages = [
-    {
-        "role": "user",
-        "content": "Why might mothers not realize they are already pregnant in the first two weeks?"
-    }
-]
-
-prompt = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
-inputs = tokenizer(prompt, return_tensors='pt', padding=True, truncation=True).to("cuda")
-outputs = model.generate(**inputs, max_length=100, num_return_sequences=1)
-text = tokenizer.decode(outputs[0], skip_special_tokens=True)
-print(text.split("assistant")[1])
+# Sample usage
+user_message = "Why might mothers not realize they are already pregnant in the first two weeks?"
+response = generate_response(user_message)
+print(response)
 ```
 
 ## Training Details
