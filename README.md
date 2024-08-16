@@ -12,16 +12,16 @@ tags:
 
 # Model Card for MamaBot-Llama-1
 
-MamaBot-Llama-1 is an opensource fine-tuned large language model developed by HelpMum to assist with maternal healthcare by providing accurate and reliable answers to questions about pregnancy and childbirth. The model has been fine-tuned on Llama 3.1 8b-instruct using a dataset of maternal healthcare questions and answers.
+MamaBot-Llama-1 is an opensource fine-tuned large language model developed by HelpMum to assist with maternal healthcare by providing accurate and reliable answers to questions about pregnancy and childbirth. The model has been fine-tuned on Llama 3.1 8b using a dataset of maternal healthcare questions and answers.
 
 ## Model Details
 
 - **Developed by:** HelpMum
 - **Shared by :** HelpMum
-- **Model type:** Causal Language Model (Llama 3.1 8b-instruct)
+- **Model type:** Causal Language Model (Llama 3.1 8b)
 - **Language(s) (NLP):** English
 - **License:** Apache-2.0
-- **Finetuned from model:** Llama 3.1 8b-instruct
+- **Finetuned from model:** Llama 3.1 8b
 
 ### Model Sources
 
@@ -132,7 +132,7 @@ The model showed consistent performance with a training loss of 0.4654 and a val
 
 ### Model Architecture and Objective
 
-The model is based on the Llama 3.1 8b-instruct architecture and aims to provide accurate and supportive responses to maternal healthcare questions.
+The model is based on the Llama 3.1 8b architecture and aims to provide accurate and supportive responses to maternal healthcare questions.
 
 ### Compute Infrastructure
 
